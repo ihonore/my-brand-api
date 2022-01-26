@@ -1,7 +1,5 @@
 export class ArticleController {
-    constructor() {
-
-    }
+    // TODO Don't access database from this file you only needs
     createArticle(req, res, next) { }
     getAllArticles(req, res, next) { }
     getArticle(req, res, next) { }
