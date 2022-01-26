@@ -1,8 +1,8 @@
 import express from 'express'
-import welcomeRoutes from "./api/welcomeRoutes"
-import articleRoutes from "./api/articleRoutes"
-import queriesRoutes from "./api/queriesRoutes"
-import userRoutes from "./api/userRoutes"
+import welcomeRoutes from "./api/welcomeRoutes.js"
+import articleRoutes from "./api/articleRoutes.js"
+import queriesRoutes from "./api/queriesRoutes.js"
+import userRoutes from "./api/userRoutes.js"
 
 const routes = express.Router()
 
