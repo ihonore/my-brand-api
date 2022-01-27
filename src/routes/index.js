@@ -7,7 +7,7 @@ import userRoutes from "./api/userRoutes.js"
 const routes = express.Router()
 
 routes.use('/', welcomeRoutes)
-routes.use('/aritcles', articleRoutes)
+routes.use('/articles', articleRoutes)
 routes.use('/queries', queriesRoutes)
 routes.use('/user', userRoutes)
 
