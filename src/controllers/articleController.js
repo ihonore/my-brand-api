@@ -5,15 +5,11 @@ import cloudinary from "cloudinary"
 export class ArticleController {
     async createArticle(req, res) {
         try {
-            await cloudinary.v2.uploader.upload(req.file.path, async function (err, image) {
-                if (err) { console.warn(err); }
-                imageUrl = image.url
-            });
             req.body.image = await uploadFile(req)
             const data = {
                 title: req.body.title,
                 content: req.body.content,
-                image: imageUrl,
+                image: req.body.image,
                 create_at: new Date()
             }
             console.log(data)
