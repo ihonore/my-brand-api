@@ -1,10 +1,11 @@
 import mongoose from "mongoose"
 
+
 const schema = mongoose.Schema({
     title: String,
     content: String,
     image: String,
-    create_at: Date,
+    create_at: { type: Date, default: Date.now() },
     comments: Array
 })
 
