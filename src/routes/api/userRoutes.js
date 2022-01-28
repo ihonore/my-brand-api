@@ -1,9 +1,15 @@
 import express from 'express'
+import { UserController } from './../../controllers/userController.js'
+const router = express.Router()
+const userControllers = new UserController()
 
-const route = express.Router()
+router.route('/')
+.post(userControllers.createUser)
+.get(userControllers.getAllUsers)
 
-route.get('/', (req, res, next) => {
-    res.status(200).json({ status: 200, message: "this will return all users", data: "" })
-})
+router.route('/:id')
+.get(userControllers.getUser)
+.patch(userControllers.updateUser)
+.delete(userControllers.deleteUser)
 
-export default route
+export default router

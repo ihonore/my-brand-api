@@ -9,6 +9,6 @@ const routes = express.Router()
 routes.use('/', welcomeRoutes)
 routes.use('/articles', articleRoutes)
 routes.use('/queries', queriesRoutes)
-routes.use('/user', userRoutes)
+routes.use('/users', userRoutes)
 
 export default routes
