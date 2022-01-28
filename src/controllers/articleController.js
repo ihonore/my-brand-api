@@ -1,12 +1,19 @@
 import { createArticleService, getAllArticlesService, getOneArticleService, updateArticleService, deleteArticleService }
 from "../services/articleServices.js"
+import {uploadFile} from "../helpers/fileUpload.js"
+import cloudinary from "cloudinary"
 export class ArticleController {
     async createArticle(req, res) {
         try {
+            await cloudinary.v2.uploader.upload(req.file.path, async function (err, image) {
+                if (err) { console.warn(err); }
+                imageUrl = image.url
+            });
+            req.body.image = await uploadFile(req)
             const data = {
                 title: req.body.title,
                 content: req.body.content,
-                image: req.body.image,
+                image: imageUrl,
                 create_at: new Date()
             }
             console.log(data)
@@ -34,6 +41,10 @@ export class ArticleController {
     }
     async updateArticle(req, res) {
         try {
+
+            if (req.file) {
+                req.body.image = await uploadFile(req)
+            }
             const articleUpdate={
                 title: req.body.title,
                 content: req.body.content,
