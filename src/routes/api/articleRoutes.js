@@ -19,7 +19,6 @@ const fileFilter = (req, file, cb) => {
 const uploads = multer({ storage, fileFilter });
 const articleControllers = new ArticleController()
 const commentControllers= new CommentController()
-route.post('/', articleControllers.createArticle)
 route.post('/', uploads.single('image'), articleControllers.createArticle)
 route.post('/:id/comments',commentControllers.createComment)
 route.get('/', articleControllers.getAllArticles)
