@@ -22,15 +22,6 @@ export const updateArticleService =async (id,articleUpdate) =>{
     
 }
 
-export const updateArticleCommentsService =async (id,newComment) =>{
-    const articleToUpdate = await Article.findById(id);
-    const articleUpdatedComment= await articleToUpdate.comments.push(newComment)
-    const articleUpdated=await Article.findOneAndUpdate({ _id: id }, articleUpdatedComment, { new: true })
-
-    return articleUpdated
-    
-}
-
 export const deleteArticleService =async (id) =>{
     const deletedArticle = await Article.findByIdAndDelete(id)
     if(deletedArticle){

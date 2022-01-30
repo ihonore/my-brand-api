@@ -1,4 +1,5 @@
 import mongoose from "mongoose"
+import Comment from "./comment.js"
 
 
 const schema = mongoose.Schema({
@@ -6,7 +7,9 @@ const schema = mongoose.Schema({
     content: String,
     image: String,
     create_at: { type: Date, default: Date.now() },
-    comments: Array
+    comments: [
+        {type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}
+      ]
 })
 
 export default mongoose.model("Article", schema)
