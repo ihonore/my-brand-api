@@ -1,9 +1,11 @@
 import express from 'express'
-
+import { ArticleController } from './../../controllers/articleController.js'
 const route = express.Router()
-
-route.get('/', (req, res, next) => {
-    res.status(200).json({ status: 200, message: "this will return all articles", data: "" })
-})
+const articleControllers = new ArticleController()
+route.post('/', articleControllers.createArticle)
+route.get('/', articleControllers.getAllArticles)
+route.get('/:id', articleControllers.getArticle)
+route.patch('/:id', articleControllers.updateArticle)
+route.delete('/:id', articleControllers.deleteArticle)
 
 export default route
