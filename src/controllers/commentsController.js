@@ -1,4 +1,4 @@
-import { createCommentService } from "../services/commentServices.js"
+import { createCommentService, getAllArticleCommentsService } from "../services/commentServices.js"
 
 export class CommentController {
     async createComment(req, res) {
@@ -9,11 +9,21 @@ export class CommentController {
                 comment: req.body.comment,
             }
             console.log(data)
-            const id=req.originalUrl.split('/')[4] //originalUrl: '/api/v1/articles/61f6b48a93d5be124e27b233/comment',
-            const comment = await createCommentService(id,data)
-            res.status(200).json({ status: 200, message: "Comment created successfully", data: comment })
+          
+            const comment = await createCommentService(req.params.articleId,data)
+            res.status(201).json({ status: 201, message: "Comment created successfully", data: comment })
         } catch (error) {
             console.log(error)
         }
+    }
+    async getAllArticleComments(req,res){
+        try{
+        const articleComments = await getAllArticleCommentsService(req.params.articleId)
+        res.status(200).json({ status: 200, message: "These are all the comments of given article", data: articleComments })
+
+        }
+      catch (error) {
+        console.log(error)
+    }
     }
 }

@@ -11,7 +11,7 @@ routes.use('/', welcomeRoutes)
 routes.use('/articles', articleRoutes)
 routes.use('/queries', queriesRoutes)
 routes.use('/users', userRoutes)
-routes.use('/articles/:id',commentRoutes)
+routes.use('/comments',commentRoutes)
 
 
 export default routes

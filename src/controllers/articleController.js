@@ -1,7 +1,6 @@
 import { createArticleService, getAllArticlesService, getOneArticleService, updateArticleService, deleteArticleService }
 from "../services/articleServices.js"
 import {uploadFile} from "../helpers/fileUpload.js"
-import cloudinary from "cloudinary"
 export class ArticleController {
     async createArticle(req, res) {
         try {

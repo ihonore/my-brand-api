@@ -13,3 +13,12 @@ export const createCommentService = async (id,newComment) => {
     return comment
          
 }
+
+export const getAllArticleCommentsService = async (id)=>{
+
+    const article= await Article.findById(id)
+    const IDs=article.comments
+    const comments=Comment.find({'_id':{$in: IDs }})
+    
+    return comments
+}
