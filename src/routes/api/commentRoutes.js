@@ -4,6 +4,7 @@ import { CommentController } from './../../controllers/commentsController.js'
 
 const route = express.Router()
 const commentsControllers = new CommentController()
-route.post('/comment', commentsControllers.createComment)
+route.post('/:articleId', commentsControllers.createComment)
+route.get('/:articleId', commentsControllers.getAllArticleComments)
 
 export default route
