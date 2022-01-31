@@ -18,5 +18,5 @@ export const createUser = async (user) => {
 export const updateUser = async (email,updates) =>{
     const user = await User.findOneAndUpdate({ email: email }, updates, { new: true });
 
-    return ({user:user.username})
+    return ({username:user.username})
 }
