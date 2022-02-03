@@ -25,7 +25,7 @@ export class UserControllers {
                 res.status(201).json({ status: 201, message: "user registered successfully", user: createdUser })
             }
         } catch (error) {
-            console.log(error)
+            res.status(500).json({message: "Internal server error!"})
         }
     }
     async login(req, res) {
@@ -43,7 +43,7 @@ export class UserControllers {
             }
 
         } catch (error) {
-            console.log(error)
+            res.status(500).json({message: "Internal server error!"})
         }
     }
 
@@ -68,7 +68,7 @@ export class UserControllers {
 
             }
          catch (error) {
-            console.log(error)
+            res.status(500).json({message: "Internal server error!"})
         }
     }
 }

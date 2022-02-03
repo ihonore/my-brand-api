@@ -15,7 +15,7 @@ export class ArticleController {
             const article = await createArticleService(data)
             res.status(200).json({ status: 200, message: "Article created successfully", data: article })
         } catch (error) {
-            console.log(error)
+            res.status(500).json({message: "Internal server error!"})
         }
     }
     async getAllArticles(req, res) {
@@ -23,7 +23,7 @@ export class ArticleController {
             const articles = await getAllArticlesService()
             res.status(200).json({ status: 200, message: "These are all the articles", data: articles })
         } catch (error) {
-            console.log(error)
+            res.status(500).json({message: "Internal server error!"})
         }
     }
     async getArticle(req, res) {
@@ -31,7 +31,7 @@ export class ArticleController {
             const article = await getOneArticleService(req.params.id)
             res.status(200).json({ status: 200, message: "article found", data: article })
         } catch (error) {
-            console.log(error)
+            res.status(500).json({message: "Internal server error!"})
         }
     }
     async updateArticle(req, res) {
@@ -50,7 +50,7 @@ export class ArticleController {
         } 
         catch (error) {
             res.send(error.message)
-            console.log(error)
+            res.status(500).json({message: "Internal server error!"})
         }
 
      }
@@ -61,7 +61,7 @@ export class ArticleController {
         }
         catch (error){
             res.send(error.message)
-            console.log(error)
+            res.status(500).json({message: "Internal server error!"})
         }
     }
 }
