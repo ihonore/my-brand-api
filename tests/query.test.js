@@ -25,6 +25,7 @@ describe("QUERY END-POINT TESTING", () => {
     it("It should loggin the user",(done) => {
         chai.request(app).post("/api/v1/users/login")
         .send(validUser)
+        
         .end((err,res)=>{
             token=res.body.accessToken;
             expect(res.body).to.have.property("message")
