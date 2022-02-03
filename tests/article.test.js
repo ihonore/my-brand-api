@@ -5,7 +5,7 @@ import 'dotenv/config';
 
 chai.use(chaiHttp)
 describe("ARTICLE END-POINT TESTING", () => {
-    it("Should retrieve the articles",(done) => {
+    it("Should retrieve the articles", (done) => {
         chai.request(app).get("/api/v1/articles/")
         .send()
         .end((err,res)=>{
@@ -16,11 +16,11 @@ describe("ARTICLE END-POINT TESTING", () => {
         })
         
     })
-    it("Should not retrieve the articles",  () => {
+    it("Should not retrieve the articles",  (done) => {
         chai.request(app).get("/api/v1/aritcle/")
         .send()
         .end((err,res)=>{
-        expect(res.body).to.have.status([404])
+        expect(res).to.have.status([404])
         done()
     })
     })
