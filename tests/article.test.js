@@ -2,6 +2,11 @@ import chai, { expect } from 'chai'
 import chaiHttp from 'chai-http'
 import app from '../src/app.js'
 import 'dotenv/config';
+import Article from "./../src/models/article.js"
+
+const all = await Article.find()
+let articleId=all[0]._id;
+
 
 chai.use(chaiHttp)
 describe("ARTICLE END-POINT TESTING", () => {
@@ -24,4 +29,17 @@ describe("ARTICLE END-POINT TESTING", () => {
         done()
     })
     })
+    it("Should  retrieve the article by id", (done) => {
+        chai
+            .request(app)
+            .get(`/api/v1/articles/${articleId}`)
+            .send()
+            .end((err, res) => {
+                expect(res).to.have.status([200]);
+                expect(res).to.have.property("status");
+                expect(res.body).to.have.property("message");
+                expect(res.body).to.have.property("data");
+                done();
+            });
+    });
 })

@@ -4,7 +4,7 @@ import Comment from "../models/comment.js"
 export const createCommentService = async (id,newComment) => {
     const comment = await Comment(newComment)
     const articleToUpdate = await Article.findById(id);
-    console.log(comment)
+    // console.log(comment)
     articleToUpdate.comments.push(comment)
     await articleToUpdate.save()
 
