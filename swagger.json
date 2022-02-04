@@ -1,0 +1,117 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "API",
+      "description": "API",
+      "version": "1.0.0"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000",
+        "name": "DEV"
+      }
+    ],
+    "paths": {
+      "/": {
+        "get": {
+          "tags": ["Home"],
+          "summary": "Home",
+          "description": "Home",
+          "operationId": "getHome",
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/users/login": {
+        "post": {
+          "tags": ["Users"],
+          "summary": "Login",
+          "description": "Login",
+          "operationId": "postUsersLogin",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "description": "Login",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Login"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/articles": {
+        "get": {
+          "tags": ["Articles"],
+          "summary": "Get all articles",
+          "description": "Get all articles",
+          "operationId": "getArticles",
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "post": {
+          "tags": ["Articles"],
+          "summary": "Create article",
+          "description": "Create article",
+          "operationId": "postArticles",
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Authorization",
+              "required": true
+            },
+            {
+              "name": "title",
+              "in": "formData",
+              "description": "title",
+              "required": true
+            },
+            {
+              "name": "content",
+              "in": "formData",
+              "description": "content",
+              "required": true
+            },
+            {
+              "name": "image",
+              "in": "formData",
+              "type": "file",
+              "description": "image",
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Login": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
