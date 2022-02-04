@@ -28,7 +28,8 @@ export class UserControllers {
             res.status(500).json({message: "Internal server error!"})
         }
     }
-    async login(req, res) {
+    
+    async login(req, res, next) {
         try {
             const exist = await userExist(req.body.email)
             if (exist) {
@@ -42,7 +43,7 @@ export class UserControllers {
                 res.status(403).json({ status: 403, message: "Invalid credentials" })
             }
 
-        } catch (error) {
+        }  catch (error) {
             res.status(500).json({message: "Internal server error!"})
         }
     }
