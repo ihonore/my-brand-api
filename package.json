@@ -1,6 +1,5 @@
 {
   "name": "my-brand-api",
-  "type": "module",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -44,8 +43,9 @@
   "homepage": "https://github.com/ihonore/my-brand-api#readme",
   "dependencies": {
     "@babel/cli": "^7.17.0",
-    "@babel/register": "^7.17.0",
+    "@babel/plugin-transform-runtime": "^7.17.0",
     "@babel/preset-env": "^7.16.11",
+    "@babel/register": "^7.17.0",
     "bcrypt": "^5.0.1",
     "better-npm-run": "^0.1.1",
     "cloudinary": "^1.28.1",

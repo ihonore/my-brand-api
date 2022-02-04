@@ -5,7 +5,7 @@ import routes from "./routes/index.js"
 import cors from "cors";
 import morgan from "morgan";
 import swaggerUi from "swagger-ui-express";
-import swaggerDocument from "../swagger.json" //assert { type: 'json' } //node --experimental-json-modules src/app.js
+import swaggerDocument from "../swagger.json" //node --experimental-json-modules src/app.js
 import 'dotenv/config'
 
 const app = express()
