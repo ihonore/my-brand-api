@@ -3,6 +3,7 @@ import chaiHttp from 'chai-http'
 import app from '../src/app.js'
 import 'dotenv/config';
 import Article from "./../src/models/article.js"
+import { TokenExpiredError } from 'jsonwebtoken';
 
 let articleId
 
@@ -51,3 +52,5 @@ describe("ARTICLE END-POINT TESTING", () => {
             });
     });
 })
+
+//TODO: CREATE article test

@@ -1,7 +1,7 @@
 import { uploadFile } from "../helpers/fileUpload.js"
 import { generateToken } from "../helpers/jwtFunctions.js"
 import { comparePassword, hashPassword } from "../helpers/passwordSecurity.js"
-import { userExist, createUser, updateUser } from "../services/userServices.js"
+import { userExist, createUser, updateUser, deleteUserService } from "../services/userServices.js"
 
 export class UserControllers {
     async register(req, res) {
@@ -69,6 +69,17 @@ export class UserControllers {
 
             }
          catch (error) {
+            res.status(500).json({message: "Internal server error!"})
+        }
+    }
+
+    async deleteUser(req, res) { 
+        try{
+            const deleteMessage = await deleteUserService(req.params.email);
+            res.status(200).json({status:200, message: deleteMessage})
+        }
+        catch (error){
+            res.send(error.message)
             res.status(500).json({message: "Internal server error!"})
         }
     }

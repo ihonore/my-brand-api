@@ -13,5 +13,6 @@ const userControllers = new UserControllers()
 route.post('/register', uploads.single('picture'), userValidation, userControllers.register)
 route.post('/login', userControllers.login)
 route.patch('/:email',authenticate,uploads.single('picture'),userUpdateValidation, userControllers.updateUserInfo)
+route.delete('/:email',authenticate, userControllers.deleteUser)
 
 export default route

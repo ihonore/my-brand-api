@@ -20,3 +20,12 @@ export const updateUser = async (email,updates) =>{
 
     return ({username:user.username})
 }
+
+export const deleteUserService =async (email) =>{
+    const deletedUser = await User.findOneAndDelete({email:email})
+    if(deletedUser){
+        return "User deleted successfully"
+    } else{
+        return "User does not exists"
+    }
+}
