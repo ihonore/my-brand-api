@@ -125,13 +125,13 @@
             },
             {
               "name": "username",
-              "in": "body",
+              "in": "formData",
               "type": "string",
               "required": false
             },
             {
               "name": "password",
-              "in": "body",
+              "in": "formData",
               "type": "string",
               "required": false
             }
@@ -277,13 +277,13 @@
             },
             {
               "name": "title",
-              "in": "body",
+              "in": "formData",
               "required": false,
               "type": "string"
             },
             {
               "name": "content",
-              "in": "body",
+              "in": "formData",
               "required": false,
               "type": "string"
             }
@@ -361,18 +361,13 @@
               "type": "string"
             },
             {
-              "name": "commenter",
+              "name": "body",
               "in": "body",
-              "description": "your names",
-              "type": "string",
-              "required": true
-            },
-            {
-              "name": "comment",
-              "in": "body",
-              "description": "comment",
-              "type": "string",
-              "required": true
+              "description": "Login",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Comment"
+              }
             }
           ],
           "responses": {
