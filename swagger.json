@@ -125,13 +125,13 @@
             },
             {
               "name": "username",
-              "in": "formData",
+              "in": "body",
               "type": "string",
               "required": false
             },
             {
               "name": "password",
-              "in": "formData",
+              "in": "body",
               "type": "string",
               "required": false
             }

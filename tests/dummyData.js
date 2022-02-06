@@ -10,10 +10,9 @@ export const userData={
 }
 
 export const article={
-    title:"Test title",
+    title:"Test title dummy",
     content:"Test content",
     image:"http://dummy.com/img.jpg",
-    _id:"61fb96ca02c6230e507c19ff"
 }
 
 export const comment={
