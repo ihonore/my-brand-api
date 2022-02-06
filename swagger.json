@@ -277,13 +277,13 @@
             },
             {
               "name": "title",
-              "in": "formData",
+              "in": "body",
               "required": false,
               "type": "string"
             },
             {
               "name": "content",
-              "in": "formData",
+              "in": "body",
               "required": false,
               "type": "string"
             }
@@ -364,12 +364,14 @@
               "name": "commenter",
               "in": "body",
               "description": "your names",
+              "type": "string",
               "required": true
             },
             {
               "name": "comment",
               "in": "body",
               "description": "comment",
+              "type": "string",
               "required": true
             }
           ],
@@ -389,6 +391,12 @@
           "summary": "Get all queries",
           "description": "Get all queries",
           "operationId": "getQueries",
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization",
+            "required": true
+          }],
           "responses": {
             "200": {
               "description": "All Queries retrieved successfuly!"
@@ -401,12 +409,6 @@
           "description": "Send a query",
           "operationId": "sendQuery",
           "parameters": [
-            {
-              "name": "Authorization",
-              "in": "header",
-              "description": "Authorization",
-              "required": true
-            },
             {
               "name": "senderName",
               "in": "formData",
@@ -439,7 +441,7 @@
           }
         }
       },
-      "/api/v1/articles/{queryId}": {
+      "/api/v1/queries/{queryId}": {
         "get": {
           "tags": ["Queries CRUD Operations"],
           "summary": "This will retrieve a query with given id",
