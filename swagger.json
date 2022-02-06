@@ -276,16 +276,13 @@
               "type": "string"
             },
             {
-              "name": "title",
-              "in": "formData",
-              "required": false,
-              "type": "string"
-            },
-            {
-              "name": "content",
-              "in": "formData",
-              "required": false,
-              "type": "string"
+              "name": "Edit Article",
+              "in": "body",
+              "description": "Edit Article",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Article"
+              }
             }
           ],
           "responses": {
@@ -361,9 +358,9 @@
               "type": "string"
             },
             {
-              "name": "body",
+              "name": "Comment section",
               "in": "body",
-              "description": "Login",
+              "description": "Leave a comment",
               "required": true,
               "schema": {
                 "$ref": "#/definitions/Comment"
@@ -405,25 +402,13 @@
           "operationId": "sendQuery",
           "parameters": [
             {
-              "name": "senderName",
-              "in": "formData",
-              "description": "names",
-              "type": "string",
-              "required": true
-            },
-            {
-              "name": "email",
-              "in": "formData",
-              "type": "string",
-              "description": "email",
-              "required": true
-            },
-            {
-              "name": "message",
-              "in": "formData",
-              "type": "string",
-              "description": "message",
-              "required": true
+              "name": "Message Section",
+              "in": "body",
+              "description": "Send a query",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Query"
+              }
             }
           ],
           "responses": {
@@ -512,8 +497,7 @@
       },
       "Article": {
         "type": "object",
-        "required": ["title", "content", "image"],
-        "properties": {
+          "properties": {
           "title": {
             "type": "string"
           },
@@ -527,7 +511,6 @@
       },
       "Query": {
         "type": "object",
-        "required": ["senderName", "email", "message"],
         "properties": {
           "senderName": {
             "type": "string"
