@@ -31,7 +31,7 @@
           }
         }
       },
-      "/api/v1/users": {
+      "/api/v1/users/register": {
         "post": {
           "tags": ["User Register,Login and Profile information"],
           "summary": "This will register a user",
@@ -124,16 +124,13 @@
               "required": true
             },
             {
-              "name": "username",
-              "in": "formData",
-              "type": "string",
-              "required": false
-            },
-            {
-              "name": "password",
-              "in": "formData",
-              "type": "string",
-              "required": false
+              "name": "User Update section",
+              "in": "body",
+              "description": "Update user info",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
             }
           ],
           "responses": {
@@ -492,6 +489,23 @@
           },
           "password": {
             "type": "string"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "picture": {
+            "type": "file"
           }
         }
       },
