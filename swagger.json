@@ -121,7 +121,8 @@
               "name": "userEmail",
               "in": "path",
               "type": "string",
-              "description":"email of the existing user"
+              "required": true,
+              "description":"Email of the existing user you want to update"
             },
             {
               "name": "username",
@@ -150,7 +151,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Successfully updated the user info"
+              "description": "Successfully updated user profile info"
             },
             "404": {
               "description": "User you want to update does not exist"
@@ -292,7 +293,7 @@
             {
               "name": "content",
               "in": "formData",
-              "description": "Article ccontent"
+              "description": "Article content"
             },
             {
               "name": "image",
