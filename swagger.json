@@ -214,20 +214,20 @@
             {
               "name": "title",
               "in": "formData",
-              "description": "title",
+              "description": "Article title",
               "required": true
             },
             {
               "name": "content",
               "in": "formData",
-              "description": "content",
+              "description": "Article content",
               "required": true
             },
             {
               "name": "image",
               "in": "formData",
               "type": "file",
-              "description": "image",
+              "description": "Article Thumbnail",
               "required": true
             }
           ],
@@ -351,7 +351,7 @@
             {
               "name": "articleId",
               "in": "path",
-              "description": " Enter the article ID",
+              "description": " Enter the article ID to get its comments",
               "required": true,
               "type": "string"
             }],
@@ -370,23 +370,28 @@
             {
               "name": "articleId",
               "in": "path",
-              "description": " Enter the article ID",
+              "description": "Enter the ID of an article your want to comment on",
               "required": true,
               "type": "string"
             },
             {
-              "name": "Comment section",
-              "in": "body",
-              "description": "Leave a comment",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/Comment"
-              }
+              "name": "commenter",
+              "in": "formData",
+              "type": "string",
+              "description":"Your names",
+              "required": true
+            },
+            {
+              "name": "comment",
+              "in": "formData",
+              "type": "string",
+              "description":"Type your comment",
+              "required": true
             }
           ],
           "responses": {
             "201": {
-              "description": "Comment created successfuly!"
+              "description": "Comment submitted successfuly!"
             },
             "500": {
               "description": "Server error"
@@ -419,13 +424,25 @@
           "operationId": "sendQuery",
           "parameters": [
             {
-              "name": "Message Section",
-              "in": "body",
-              "description": "Send a query",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/Query"
-              }
+              "name": "senderName",
+              "in": "formData",
+              "type": "string",
+              "description":"Your names",
+              "required": true
+            },
+            {
+              "name": "email",
+              "in": "formData",
+              "type": "string",
+              "description":"Your email",
+              "required": true
+            },
+            {
+              "name": "message",
+              "in": "formData",
+              "type": "string",
+              "description":"Your message or inquiry",
+              "required": true
             }
           ],
           "responses": {

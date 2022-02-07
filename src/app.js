@@ -34,7 +34,7 @@ try {
     app.use(express.json())
 
     app.get("/", (req, res) => {
-        res.json({ message: "Welcome to the API" });
+        res.json({ message: "🟢WELCOME TO THE API🟢 add /api-docs to the Url to get to documentation" });
       });
 
     app.use("/api/v1/", routes)
