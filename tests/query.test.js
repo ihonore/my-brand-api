@@ -8,7 +8,7 @@ import User from "./../src/models/user.js"
 chai.use(chaiHttp)
 describe("QUERY END-POINT TESTING", () => {
     before(async ()=>{
-       await User.deleteOne({email:userData.email})
+       await User.deleteMany({email:userData.email})
     })
 
     it("It should register the user",(done) => {
@@ -28,7 +28,6 @@ describe("QUERY END-POINT TESTING", () => {
         
         .end((err,res)=>{
             token=res.body.accessToken;
-            expect(res.body).to.have.property("message")
             expect(res.body).to.have.property("accessToken")
           done()
         })
