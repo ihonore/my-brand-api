@@ -375,18 +375,13 @@
               "type": "string"
             },
             {
-              "name": "commenter",
-              "in": "formData",
-              "type": "string",
-              "description":"Your names",
-              "required": true
-            },
-            {
-              "name": "comment",
-              "in": "formData",
-              "type": "string",
-              "description":"Type your comment",
-              "required": true
+              "name": "body",
+              "in": "body",
+              "description": "Comment section",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Comment"
+              }
             }
           ],
           "responses": {
@@ -424,25 +419,13 @@
           "operationId": "sendQuery",
           "parameters": [
             {
-              "name": "senderName",
-              "in": "formData",
-              "type": "string",
-              "description":"Your names",
-              "required": true
-            },
-            {
-              "name": "email",
-              "in": "formData",
-              "type": "string",
-              "description":"Your email",
-              "required": true
-            },
-            {
-              "name": "message",
-              "in": "formData",
-              "type": "string",
-              "description":"Your message or inquiry",
-              "required": true
+              "name": "body",
+              "in": "body",
+              "description": "Send a message",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Query"
+              }
             }
           ],
           "responses": {
@@ -520,6 +503,7 @@
     "definitions": {
       "Login": {
         "type": "object",
+        "required": ["email", "password"],
         "properties": {
           "email": {
             "type": "string"
@@ -531,6 +515,7 @@
       },
       "User": {
         "type": "object",
+        "required": ["username", "email","password"],
         "properties": {
           "username": {
             "type": "string"
@@ -548,6 +533,7 @@
       },
       "Article": {
         "type": "object",
+        "required": ["title", "content","image"],
           "properties": {
           "title": {
             "type": "string"
@@ -562,6 +548,7 @@
       },
       "Query": {
         "type": "object",
+        "required": ["senderName", "email","message"],
         "properties": {
           "senderName": {
             "type": "string"
