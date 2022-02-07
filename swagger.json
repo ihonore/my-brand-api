@@ -17,6 +17,13 @@
         "name": "DEV"
       }
     ],
+    "securityDefinitions": {
+      "Bearer": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    },
     "paths": {
       "/": {
         "get": {
@@ -112,12 +119,6 @@
           "produces": ["application/json"],
           "parameters": [
             {
-              "name": "Authorization",
-              "in": "header",
-              "description": "Authorization",
-              "required": true
-            },
-            {
               "name": "userEmail",
               "in": "path",
               "type": "string",
@@ -156,7 +157,12 @@
             "404": {
               "description": "User you want to update does not exist"
             }
-          }
+          },
+          "security": [
+            {
+              "Bearer": []
+            }
+          ]
         },
         "delete": {
           "tags": ["User Register,Login and Profile information"],
@@ -164,12 +170,6 @@
           "description": " ",
           "produces": ["application/json"],
           "parameters": [
-            {
-              "name": "Authorization",
-              "in": "header",
-              "description": "Authorization",
-              "required": true
-            },
             {
               "name": "userEmail",
               "in": "path",
@@ -184,7 +184,12 @@
             "404": {
               "description": "User account with that email not found"
             }
-          }
+          },
+          "security": [
+            {
+              "Bearer": []
+            }
+          ]
         }
       },
       "/api/v1/articles": {
@@ -205,12 +210,6 @@
           "description": "Create an article",
           "operationId": "postArticles",
           "parameters": [
-            {
-              "name": "Authorization",
-              "in": "header",
-              "description": "Authorization",
-              "required": true
-            },
             {
               "name": "title",
               "in": "formData",
@@ -238,13 +237,18 @@
             "500": {
               "description": "Server error"
             }
-          }
+          },
+          "security": [
+            {
+              "Bearer": []
+            }
+          ]
         }
       },
       "/api/v1/articles/{articleId}": {
         "get": {
           "tags": ["Articles CRUD Operations"],
-          "summary": "This will retrieve an article with given id",
+          "summary": "This will retrieve an article with given ID",
           "description": " ",
           "produces": ["application/json"],
           "parameters": [
@@ -268,16 +272,10 @@
   
         "patch": {
           "tags": ["Articles CRUD Operations"],
-          "summary": "This will update the article with given id",
+          "summary": "This will update the article with given ID",
           "description": " ",
           "produces": ["application/json"],
           "parameters": [
-            {
-              "name": "Authorization",
-              "in": "header",
-              "description": "Authorization",
-              "required": true
-            },
             {
               "name": "articleId",
               "in": "path",
@@ -307,9 +305,14 @@
               "description": "Article updated successfully!"
             },
             "404": {
-              "description": "article with that id not found"
+              "description": "article with that ID not found"
             }
-          }
+          },
+          "security": [
+            {
+              "Bearer": []
+            }
+          ]
         },
         "delete": {
           "tags": ["Articles CRUD Operations"],
@@ -318,15 +321,9 @@
           "produces": ["application/json"],
           "parameters": [
             {
-              "name": "Authorization",
-              "in": "header",
-              "description": "Authorization",
-              "required": true
-            },
-            {
               "name": "articleId",
               "in": "path",
-              "descrpition": "Please enter article id here",
+              "descrpition": "Please enter article ID here",
               "required": true,
               "type": "string"
             }
@@ -338,7 +335,12 @@
             "404": {
               "description": "Article not found"
             }
-          }
+          },
+          "security": [
+            {
+              "Bearer": []
+            }
+          ]
         }
       },
       "/api/v1/comments/{articleId}": {
@@ -400,17 +402,16 @@
           "summary": "Get all queries",
           "description": "Get all queries",
           "operationId": "getQueries",
-          "parameters": [{
-            "name": "Authorization",
-            "in": "header",
-            "description": "Authorization",
-            "required": true
-          }],
           "responses": {
             "200": {
               "description": "All Queries retrieved successfuly!"
             }
-          }
+          },
+          "security": [
+            {
+              "Bearer": []
+            }
+          ]
         },
         "post": {
           "tags": ["Queries CRUD Operations"],
@@ -441,16 +442,11 @@
       "/api/v1/queries/{queryId}": {
         "get": {
           "tags": ["Queries CRUD Operations"],
-          "summary": "This will retrieve a query with given id",
+          "summary": "This will retrieve a query with given ID",
           "description": " ",
           "produces": ["application/json"],
           "parameters": [
-            {
-              "name": "Authorization",
-              "in": "header",
-              "description": "Authorization",
-              "required": true
-            },
+
             {
               "name": "queryId",
               "in": "path",
@@ -466,24 +462,23 @@
             "404": {
               "description": "no query found with that ID"
             }
-          }
+          },
+          "security": [
+            {
+              "Bearer": []
+            }
+          ]
         },
         "delete": {
           "tags": ["Queries CRUD Operations"],
-          "summary": "Ths will delete a query with given ID",
+          "summary": "This will delete a query with given ID",
           "description": " ",
           "produces": ["application/json"],
           "parameters": [
             {
-              "name": "Authorization",
-              "in": "header",
-              "description": "Authorization",
-              "required": true
-            },
-            {
               "name": "queryId",
               "in": "path",
-              "descrpition": "Please enter a query id here",
+              "descrpition": "Please enter a query ID here",
               "required": true,
               "type": "string"
             }
@@ -495,7 +490,12 @@
             "404": {
               "description": "Query not found"
             }
-          }
+          },
+          "security": [
+            {
+              "Bearer": []
+            }
+          ]
         }
       }
     
