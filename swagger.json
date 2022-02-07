@@ -118,30 +118,42 @@
               "required": true
             },
             {
-              "name": "email",
+              "name": "userEmail",
               "in": "path",
               "type": "string",
-              "required": true
+              "description":"email of the existing user"
             },
             {
-              "name": "User Update section",
-              "in": "body",
-              "description": "Update user info",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
+              "name": "username",
+              "in": "formData",
+              "description":"new username",
+              "type": "string"
+            },
+            {
+              "name": "email",
+              "in": "formData",
+              "description":"new email",
+              "type": "string"
+            },
+            {
+              "name": "password",
+              "in": "formData",
+              "description":"new password",
+              "type": "string"
+            },
+            {
+              "name": "picture",
+              "in": "formData",
+              "description":"new profile picture",
+              "type": "file"
             }
           ],
           "responses": {
             "200": {
-              "description": "successfully updated user with given id"
-            },
-            "409": {
-              "description": "please fill in all fields"
+              "description": "Successfully updated the user info"
             },
             "404": {
-              "description": "user you want to update does not exist"
+              "description": "User you want to update does not exist"
             }
           }
         },
@@ -273,13 +285,20 @@
               "type": "string"
             },
             {
-              "name": "Edit Article",
-              "in": "body",
-              "description": "Edit Article",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/Article"
-              }
+              "name": "title",
+              "in": "formData",
+              "description": "title"
+            },
+            {
+              "name": "content",
+              "in": "formData",
+              "description": "Article ccontent"
+            },
+            {
+              "name": "image",
+              "in": "formData",
+              "type": "file",
+              "description": "Article thumbnail"
             }
           ],
           "responses": {
@@ -293,7 +312,7 @@
         },
         "delete": {
           "tags": ["Articles CRUD Operations"],
-          "summary": "Ths will delete an article with given ID",
+          "summary": "This will delete an article with given ID",
           "description": " ",
           "produces": ["application/json"],
           "parameters": [
