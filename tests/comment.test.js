@@ -10,7 +10,8 @@ let articleId
 
 const getArticleId= async ()=>{
     const all = await Article.find()
-    let id=all[0]._id;
+    let length=all.length;
+    let id=all[length-1]._id;
     return id
 }
 

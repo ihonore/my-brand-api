@@ -2,7 +2,7 @@ import chai, { expect } from 'chai'
 import chaiHttp from 'chai-http'
 import app from '../src/app.js'
 import 'dotenv/config';
-import { userData2, validUser2 } from './dummyData.js';
+import {userData, userData2, userDatatoDelete, validUser2 } from './dummyData.js';
 import User from "./../src/models/user.js"
 
 
@@ -15,6 +15,16 @@ describe("USER END-POINT TESTING", () => {
     it("It should register the user",(done) => {
         chai.request(app).post("/api/v1/users/register")
         .send(userData2)
+        .end((err,res)=>{
+            expect(res).to.have.status([201])
+          done()
+        })
+        
+    })
+
+    it("It should register the user for deleting",(done) => {
+        chai.request(app).post("/api/v1/users/register")
+        .send(userDatatoDelete)
         .end((err,res)=>{
             expect(res).to.have.status([201])
           done()
@@ -47,7 +57,7 @@ describe("USER END-POINT TESTING", () => {
     })
 
     it("When not logged in, should not update profile information",  (done) => {
-        chai.request(app).patch(`/api/v1/users/${userData2.email}`)
+        chai.request(app).patch(`/api/v1/users/${userDatatoDelete.email}`)
         .send()
         .end((err,res)=>{
         expect(res.body).to.have.property("error")
@@ -71,7 +81,7 @@ describe("USER END-POINT TESTING", () => {
     it("Should delete user when authorized", (done) => {
         chai
             .request(app)
-            .delete(`/api/v1/users/${userData2.email}`)
+            .delete(`/api/v1/users/${userDatatoDelete.email}`)
             .set('Authorization', `Bearer ${token2}`)
             .send()
             .end((err, res) => {

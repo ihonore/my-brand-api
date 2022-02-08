@@ -2,7 +2,7 @@ import chai, { expect } from 'chai'
 import chaiHttp from 'chai-http'
 import app from '../src/app.js'
 import 'dotenv/config';
-import { query, userData, validUser } from './dummyData.js';
+import { query, userData3, validUser3 } from './dummyData.js';
 import Query from "./../src/models/query.js"
 import User from "./../src/models/user.js"
 
@@ -21,13 +21,13 @@ const getQueryId= async ()=>{
 chai.use(chaiHttp)
 describe("QUERY END-POINT TESTING", () => {
     before(async ()=>{
-       await User.deleteMany({email:userData.email})
-       await Query.deleteMany({email:userData.email})
+       await User.deleteMany({email:userData3.email})
+       await Query.deleteMany({email:userData3.email})
     })
 
     it("It should register the user",(done) => {
         chai.request(app).post("/api/v1/users/register")
-        .send(userData)
+        .send(userData3)
         .end((err,res)=>{
             expect(res).to.have.status([201])
           done()
@@ -38,7 +38,7 @@ describe("QUERY END-POINT TESTING", () => {
     let token=""
     it("It should loggin the user",(done) => {
         chai.request(app).post("/api/v1/users/login")
-        .send(validUser)
+        .send(validUser3)
         
         .end((err,res)=>{
             token=res.body.accessToken;
