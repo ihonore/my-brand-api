@@ -1,26 +1,19 @@
 import mongoose from "mongoose"
-import validator from 'validator'
 
-const userSchema = new mongoose.Schema({
-    name: {
-      type: String,
-      required: [true, 'Please tell us your name!']
-    },
-    email: {
-      type: String,
-      required: [true, 'Please provide your email'],
-      unique: true,
-      lowercase: true,
-      validate: [validator.isEmail, 'Please provide a valid email']
-    },
-    photo: {type: String,
-    default:"https://www.sibberhuuske.nl/wp-content/uploads/2016/10/default-avatar.png" },
-
-    password: {
-      type: String,
-      required: [true, 'Please provide a password'],
-      minlength: 8,
+const opts = {
+    timestamps: {
+        createdAt: 'created_at',
+        updatedAt: 'updated_at'
     }
-  });
-  
-  export default mongoose.model('User', userSchema)
+};
+const schema = mongoose.Schema(
+    {
+        username: String,
+        email: String,
+        password: String,
+        picture: String,
+    },
+    opts
+)
+
+export default mongoose.model("User", schema)
