@@ -18,5 +18,8 @@ export const querySchema = joi.object({
         "string.empty": "The message is not allowed to be empty",
         "string.pattern.base": "Message must be below 1000 characters",
         "any.required": "Message is required"
+    }),
+    location:joi.string().messages({
+        "string.base": "Sorry! It looks like something went wrong. Please try later"
     })
 })
