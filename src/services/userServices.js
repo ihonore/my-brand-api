@@ -15,6 +15,11 @@ export const createUser = async (user) => {
     return userCreated
 }
 
+export const getOneUserService = async (email) => {
+    const user = await User.findOne({email:email})
+    return user
+}
+
 export const updateUser = async (email,updates) =>{
     const user = await User.findOneAndUpdate({ email: email }, updates, { new: true });
 
