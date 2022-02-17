@@ -12,7 +12,7 @@ export const userSchema = joi.object({
         "string.email": "Enter a valid email address",
         "any.required": "Email is required"
     }),
-    password: joi.string().min(8).max(10)
+    password: joi.string().min(8).max(20)
     .pattern(new RegExp(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/))
     .required().messages({
         "string.base": "Sorry! It looks like something went wrong. Please try later",
