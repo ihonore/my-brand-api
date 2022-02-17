@@ -11,7 +11,7 @@ export class QueryController {
                 create_at: new Date()
             }
             const query = await createQueryService(data)
-            res.status(200).json({ status: 200, message: "Query created successfully", data: query })
+            res.status(201).json({ status: 201, message: "Query created successfully", data: query })
         } catch (error) {
             res.status(500).json({message: "Internal server error!"})
         }

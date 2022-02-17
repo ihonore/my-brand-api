@@ -65,7 +65,7 @@ export class UserControllers {
                 }
                
                 const updatedUser = await updateUser(req.params.email,user)
-                res.status(201).json({ status: 201, message: "user info updated successfully", user: updatedUser })
+                res.status(200).json({ status: 200, message: "user info updated successfully", user: updatedUser })
 
             }
          catch (error) {
