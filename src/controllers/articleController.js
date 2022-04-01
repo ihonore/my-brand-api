@@ -12,7 +12,7 @@ export class ArticleController {
                 create_at: new Date()
             }
             const article = await createArticleService(data)
-            res.status(200).json({ status: 200, message: "Article created successfully", data: article })
+            res.status(201).json({ status: 201, message: "Article created successfully", data: article })
         } catch (error) {
             res.status(500).json({message: "Internal server error!"})
         }

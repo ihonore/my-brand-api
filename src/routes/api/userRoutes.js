@@ -10,6 +10,8 @@ const storage = multer.diskStorage({});
 
 const uploads = multer({ storage, fileFilter });
 const userControllers = new UserControllers()
+
+route.get('/:email', authenticate,userControllers.getUser)
 route.post('/register', uploads.single('picture'), userValidation, userControllers.register)
 route.post('/login', userControllers.login)
 route.patch('/:email',authenticate,uploads.single('picture'),userUpdateValidation, userControllers.updateUserInfo)

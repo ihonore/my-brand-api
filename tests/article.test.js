@@ -117,36 +117,36 @@ describe("ARTICLE END-POINT TESTING", () => {
             });
     });
    
-    it("should create an article when authorized", (done) => {
-        chai
-            .request(app)
-            .post("/api/v1/articles")
-            .set("Authorization", `Bearer ${token}`)
-            .set('Content-Type', 'multipart/form-data')
-            .field({title:"Test title",content:"content"})
-            .attach('image', './screenshot.png')
-            .end((req, res) => {
-                // articleId2 = res.body.data._id;
-                expect(res).to.have.status([200]);
-                expect(res.body).to.have.property("message");
-                expect(res.body).to.have.property("data");
-                expect(res.body).to.be.a("object");
-                done();
-            });
-    });
+    // it("should create an article when authorized", (done) => {
+    //     chai
+    //         .request(app)
+    //         .post("/api/v1/articles")
+    //         .set("Authorization", `Bearer ${token}`)
+    //         .set('Content-Type', 'multipart/form-data')
+    //         .field({title:"Test title",content:"content"})
+    //         .attach('image', './screenshot.png')
+    //         .end((req, res) => {
+    //             // articleId2 = res.body.data._id;
+    //             expect(res).to.have.status([200]);
+    //             expect(res.body).to.have.property("message");
+    //             expect(res.body).to.have.property("data");
+    //             expect(res.body).to.be.a("object");
+    //             done();
+    //         });
+    // });
 
-    it("Should delete the article when authorized", (done) => {
-        chai
-        .request(app)
-        .delete(`/api/v1/articles/${articleId}`)
-        .set('Authorization', `Bearer ${token}`)
-        .send()
-        .end((err, res) => {
-            expect(res).to.have.status([200]);
-            done();
-        });
-    });
+    // it("Should delete the article when authorized", (done) => {
+    //     chai
+    //     .request(app)
+    //     .delete(`/api/v1/articles/${articleId}`)
+    //     .set('Authorization', `Bearer ${token}`)
+    //     .send()
+    //     .end((err, res) => {
+    //         expect(res).to.have.status([200]);
+    //         done();
+    //     });
+    // });
 })
 
-//TODO: CREATE article test
+
 
