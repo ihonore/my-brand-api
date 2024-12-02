@@ -36,7 +36,19 @@ try {
       process.exit(1);
     });
 
-  app.use(cors());
+  const allowedOrigins = ["https://ihonore.netlify.app"];
+
+  const corsOptions = {
+    origin: (origin, callback) => {
+      if (allowedOrigins.includes(origin) || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+  };
+
+  app.use(cors(corsOptions));
   app.use(morgan("dev"));
   app.use(express.json());
 
