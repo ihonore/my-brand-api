@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "PORTFOLIO API",
-    "description": "A personal portfolio API",
+    "description": "A personal portfolio REST API",
     "version": "1.0.0",
     "contact": {
       "name": "Honore IRADUKUNDA",
